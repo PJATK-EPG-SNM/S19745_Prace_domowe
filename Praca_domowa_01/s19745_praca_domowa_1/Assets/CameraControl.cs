@@ -1,19 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class CameraControl : MonoBehaviour { 
-public Transform Followplatform;
-public Transform Player;
-    // Start is called before the first frame update
+public class CompleteCameraController : MonoBehaviour
+{
+
+    public GameObject player;
+
+    private Vector3 offset; 
+ 
     void Start()
     {
-        
+       
+        offset = transform.position - player.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Followplatform.position = new Vector3(Player.position.x, 0, 0);
+        transform.position = player.transform.position + offset;
     }
 }
